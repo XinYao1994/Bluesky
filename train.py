@@ -84,6 +84,7 @@ def main():
         plt.xlabel("TimeStamp (hours)")
         plt.ylabel("Total Enerage Usage")
         plt.show()
+        plt.savefig("x.pdf")
       except Exception as E:
         print "illegal input"
 
