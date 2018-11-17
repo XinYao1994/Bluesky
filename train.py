@@ -19,9 +19,9 @@ import collections
 
 import math
 # using Keras
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import LSTM
+#from keras.models import Sequential
+#from keras.layers import Dense
+#from keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
@@ -36,14 +36,24 @@ import numpy as np
 # utils
 import argparse
 import logging
-import numpy as np
 from datetime import datetime
 
-split = 0.67
+split = 0.8
+loop = 24 # this means a day
 # --gpu
 
+# convert an array of values into a dataset matrix
+def create_dataset(dataset, look_back=1):
+  dataX, dataY = [], []
+  for i in range(len(dataset)-look_back-1):
+    a = dataset[i:(i+look_back), 0]
+    dataX.append(a)
+    dataY.append(dataset[i + look_back, 0])
+  return np.array(dataX), np.array(dataY)
+
+
 def main():
-  #parser = argparse.ArgumentParser(description="Caffe2: Blue Sky Training")
+  parser = argparse.ArgumentParser(description="Blue Sky Training")
   parser.add_argument("--train_data", type=str, default="hku_jcsviii.csv", help="Path to training data in a text file format")
   #parser.add_argument("--train_iter", type=int, default=10000, help="max training iteration")
   #parser.add_argument("--seq_length", type=int, default=25, help="One training example sequence length")
@@ -86,26 +96,58 @@ def main():
         dateAsKey = data.keys()
         # Train total:
         total_data = map(lambda x:float(x[0]), data.values())
-        c = {"a": range(len(dateAsKey)), "b": total_data}
+        c = {"1": total_data}
         df = DataFrame(c)
         dataset = df.values
         dataset = dataset.astype('float32')
-        print dataset
         # normalize the dataset
         scaler = MinMaxScaler(feature_range=(0, 1))
         dataset = scaler.fit_transform(dataset)
         
+        train_size = int(len(dataset) * split)
+        test_size = len(dataset) - train_size
+        train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
+        print train
+        print test
+
+        look_back = loop
+        trainX, trainY = create_dataset(train, look_back)
+        testX, testY = create_dataset(test, look_back)
+        # reshape
+        trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
+        testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+
+        print testX, len(testX[0][0]), testY 
+        # create and fit the LSTM network
+        #model = Sequential()
+        #model.add(LSTM(4, input_shape=(1, look_back)))
+        #model.add(Dense(1))
+        #model.compile(loss='mean_squared_error', optimizer='adam')
+        #model.fit(trainX, trainY, epochs=100, batch_size=1, verbose=2)
+        # make predictions
+        #trainPredict = model.predict(trainX)
+        #testPredict = model.predict(testX)
+        # invert predictions
+        #trainPredict = scaler.inverse_transform(trainPredict)
+        #trainY = scaler.inverse_transform([trainY])
+        #testPredict = scaler.inverse_transform(testPredict)
+        #testY = scaler.inverse_transform([testY])
+        # calculate root mean squared error
+        #trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
+        #print('Train Score: %.2f RMSE' % (trainScore))
+        #testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
+        #print('Test Score: %.2f RMSE' % (testScore))
         # print dateAsKey
         # draw now:
         # model.TrainModel()
         # forecast
         print "predict the tendency within " + period + " hours"
-        plt.figure(figsize=(12,5))#
-        plt.plot(np.arange(len(dataset)), dataset, linestyle='-', color='k', label = dateAsKey)
-        plt.xlabel("TimeStamp (hours)")
-        plt.ylabel("Total Enerage Usage")
-        plt.show()
-        plt.savefig("x.pdf")
+        #plt.figure(figsize=(12,5))#
+        #plt.plot(np.arange(len(dataset)), dataset, linestyle='-', color='k', label = dateAsKey)
+        #plt.xlabel("TimeStamp (hours)")
+        #plt.ylabel("Total Enerage Usage")
+        #plt.show()
+        #plt.savefig("x.pdf")
       #except Exception as E:
       #  print "illegal input"
 
