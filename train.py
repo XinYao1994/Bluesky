@@ -12,10 +12,10 @@ import collections
 #from __future__ import print_function
 #from __future__ import unicode_literals
 
-#from caffe2.python import core, workspace, model_helper, utils, brew
-#from caffe2.python.rnn_cell import LSTM
-#from caffe2.proto import caffe2_pb2
-#from caffe2.python.optimizer import build_sgd
+from caffe2.python import core, workspace, model_helper, utils, brew
+from caffe2.python.rnn_cell import LSTM
+from caffe2.proto import caffe2_pb2
+from caffe2.python.optimizer import build_sgd
 
 # drawing
 from pandas import *
