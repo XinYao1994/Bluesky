@@ -17,6 +17,14 @@ import collections
 #from caffe2.proto import caffe2_pb2
 #from caffe2.python.optimizer import build_sgd
 
+# drawing
+from pandas import *
+import string
+import matplotlib
+import matplotlib.pyplot as plt  
+import numpy as np
+
+# utils
 import argparse
 import logging
 import numpy as np
@@ -42,8 +50,9 @@ def main():
     if dict.has_key(item[0]):
       dict[item[0]][item[1]] = item[2:6]
     else:
-      dict[item[0]] = {}
+      dict[item[0]] = collections.OrderedDict()
       dict[item[0]][item[1]] = item[2:6]
+  
   print "Available Location Name:"
   dict.pop('Location Name')
   print dict.keys()
@@ -59,11 +68,22 @@ def main():
         #with core.DeviceScope(device):
         #  model = CharRNN(args)
         #  model.CreateModel()
-          # training with the data
+        # training with the data
         print "train the data with location " + locate
-        #  model.TrainModel()
-          # forecast
+        data = dict[locate]
+        dateAsKey = data.keys()
+        # Train total:
+        total_data = map(lambda x:float(x[0]), data.values())
+        print dateAsKey
+        # draw now:
+        # model.TrainModel()
+        # forecast
         print "predict the tendency within " + period + " hours"
+        plt.figure(figsize=(12,4))
+        plt.plot(np.arange(len(total_data)), total_data, linestyle='--', color='k', label = dateAsKey)
+        plt.xlabel("TimeStamp (hours)")
+        plt.ylabel("Total Enerage Usage")
+        plt.show()
       except Exception as E:
         print "illegal input"
 
