@@ -19,9 +19,9 @@ import collections
 
 import math
 # using Keras
-#from keras.models import Sequential
-#from keras.layers import Dense
-#from keras.layers import LSTM
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 
@@ -107,8 +107,8 @@ def main():
         train_size = int(len(dataset) * split)
         test_size = len(dataset) - train_size
         train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
-        print train
-        print test
+        # print train
+        # print test
 
         look_back = loop
         trainX, trainY = create_dataset(train, look_back)
@@ -117,37 +117,44 @@ def main():
         trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
         testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
 
-        print testX, len(testX[0][0]), testY 
+        # print testX, len(testX[0][0]), testY 
         # create and fit the LSTM network
-        #model = Sequential()
-        #model.add(LSTM(4, input_shape=(1, look_back)))
-        #model.add(Dense(1))
-        #model.compile(loss='mean_squared_error', optimizer='adam')
-        #model.fit(trainX, trainY, epochs=100, batch_size=1, verbose=2)
+        model = Sequential()
+        model.add(LSTM(4, input_shape=(1, look_back)))
+        model.add(Dense(1))
+        model.compile(loss='mean_squared_error', optimizer='adam')
+        model.fit(trainX, trainY, epochs=1000, batch_size=64, verbose=2)
         # make predictions
-        #trainPredict = model.predict(trainX)
-        #testPredict = model.predict(testX)
+        trainPredict = model.predict(trainX)
+        testPredict = model.predict(testX)
         # invert predictions
-        #trainPredict = scaler.inverse_transform(trainPredict)
-        #trainY = scaler.inverse_transform([trainY])
-        #testPredict = scaler.inverse_transform(testPredict)
-        #testY = scaler.inverse_transform([testY])
+        trainPredict = scaler.inverse_transform(trainPredict)
+        trainY = scaler.inverse_transform([trainY])
+        testPredict = scaler.inverse_transform(testPredict)
+        testY = scaler.inverse_transform([testY])
         # calculate root mean squared error
-        #trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
-        #print('Train Score: %.2f RMSE' % (trainScore))
-        #testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
-        #print('Test Score: %.2f RMSE' % (testScore))
+        trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
+        print('Train Score: %.2f RMSE' % (trainScore))
+        testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
+        print('Test Score: %.2f RMSE' % (testScore))
         # print dateAsKey
         # draw now:
         # model.TrainModel()
         # forecast
         print "predict the tendency within " + period + " hours"
-        #plt.figure(figsize=(12,5))#
-        #plt.plot(np.arange(len(dataset)), dataset, linestyle='-', color='k', label = dateAsKey)
-        #plt.xlabel("TimeStamp (hours)")
-        #plt.ylabel("Total Enerage Usage")
-        #plt.show()
-        #plt.savefig("x.pdf")
+        dataAsPredict = range(period) 
+        Predictresult = []
+        for i in dataAsPredict:
+          window = dataset[len(dataset)-look_back+1+i:len(dataset),:] + np.array(Predictresult)
+          PX = create_dataset(window, look_back)
+          PX = np.reshape(PX, (PX.shape[0], 1, PX.shape[1]))
+          Predictresult.append(model.predict(PX));
+        plt.figure(figsize=(12,5))#
+        plt.plot(dataAsPredict, Predictresult, linestyle='-', color='k', label = dataAsPredict)
+        plt.xlabel("TimeStamp (hours)")
+        plt.ylabel("Total Enerage Usage")
+        # plt.show()
+        plt.savefig("output.pdf")
       #except Exception as E:
       #  print "illegal input"
 
