@@ -5,4 +5,5 @@ pip install keras --user
 pip install scikit-learn --user
 pip install tensorflow-gpu --user
 pip install pandas --user
+pip install matplotlib --user
 ````
