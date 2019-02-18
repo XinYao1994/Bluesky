@@ -151,6 +151,7 @@ def main():
         testPredictPlot[:, :] = np.nan
         testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
 
+        plt.figure(figsize=(12,4))
         plt.plot(scaler.inverse_transform(dataset))
         plt.plot(trainPredictPlot)
         plt.plot(testPredictPlot)
