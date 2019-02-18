@@ -142,7 +142,7 @@ def main():
         # model.TrainModel()
         # forecast
         print "predict the tendency within " + period + " hours"
-        dataAsPredict = range(period) 
+        dataAsPredict = range(int(period)) 
         Predictresult = []
         for i in dataAsPredict:
           window = dataset[len(dataset)-look_back+1+i:len(dataset),:] + np.array(Predictresult)
