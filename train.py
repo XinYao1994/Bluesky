@@ -114,6 +114,7 @@ def main():
         trainX, trainY = create_dataset(train, look_back)
         testX, testY = create_dataset(test, look_back)
         # reshape
+        print trainX
         trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
         testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
 
@@ -141,20 +142,42 @@ def main():
         # draw now:
         # model.TrainModel()
         # forecast
+        
+        trainPredictPlot = np.empty_like(dataset)
+        trainPredictPlot[:, :] = np.nan
+        trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
+
+        testPredictPlot = np.empty_like(dataset)
+        testPredictPlot[:, :] = np.nan
+        testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
+
+        plt.plot(scaler.inverse_transform(dataset))
+        plt.plot(trainPredictPlot)
+        plt.plot(testPredictPlot)
+        # plt.show()
+        plt.savefig("output.pdf")
+
+        '''
         print "predict the tendency within " + period + " hours"
         dataAsPredict = range(int(period)) 
         Predictresult = []
         for i in dataAsPredict:
-          window = dataset[len(dataset)-look_back+1+i:len(dataset),:] + np.array(Predictresult)
-          PX = create_dataset(window, look_back)
+          begin = len(dataset)-look_back+i
+          end = len(dataset)
+          window = np.append(dataset[begin:end,:], np.array(Predictresult))
+          print window
+          PX, PY = create_dataset(window, look_back)
+          print PX, PY
           PX = np.reshape(PX, (PX.shape[0], 1, PX.shape[1]))
           Predictresult.append(model.predict(PX));
+        
         plt.figure(figsize=(12,5))#
         plt.plot(dataAsPredict, Predictresult, linestyle='-', color='k', label = dataAsPredict)
         plt.xlabel("TimeStamp (hours)")
         plt.ylabel("Total Enerage Usage")
         # plt.show()
         plt.savefig("output.pdf")
+        '''
       #except Exception as E:
       #  print "illegal input"
 
