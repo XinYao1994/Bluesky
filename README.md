@@ -7,3 +7,7 @@ pip install tensorflow-gpu --user
 pip install pandas --user
 pip install matplotlib --user
 ````
+
+Reference
+
+1. [Time Series Prediction With Deep Learning in Keras](https://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
