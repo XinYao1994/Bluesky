@@ -121,7 +121,14 @@ def main():
         # print testX, len(testX[0][0]), testY 
         # create and fit the LSTM network
         model = Sequential()
-        model.add(LSTM(4, input_shape=(1, look_back)))
+        model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4, return_sequences=True))
+        model.add(LSTM(4))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer='adam')
         model.fit(trainX, trainY, epochs=1000, batch_size=64, verbose=2)
