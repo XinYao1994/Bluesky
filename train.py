@@ -39,7 +39,7 @@ import logging
 from datetime import datetime
 
 split = 0.8
-loop = 24 # this means a day
+# loop = 24 this means a day
 # --gpu
 
 # convert an array of values into a dataset matrix
@@ -55,9 +55,10 @@ def create_dataset(dataset, look_back=1):
 def main():
   parser = argparse.ArgumentParser(description="Blue Sky Training")
   parser.add_argument("--train_data", type=str, default="hku_jcsviii.csv", help="Path to training data in a text file format")
-  #parser.add_argument("--train_iter", type=int, default=10000, help="max training iteration")
-  #parser.add_argument("--seq_length", type=int, default=25, help="One training example sequence length")
-  #parser.add_argument("--batch_size", type=int, default=1, help="Training batch size")
+  parser.add_argument("--train_iter", type=int, default=1000, help="max training iteration")
+  parser.add_argument("--seq_length", type=int, default=24, help="One training example sequence length")
+  parser.add_argument("--layers", type=int, default=1, help="the number of layers of the NN")
+  parser.add_argument("--batch_size", type=int, default=64, help="Training batch size")
   #parser.add_argument("--iters_to_report", type=int, default=500, help="How often to report loss and generate text")
   #parser.add_argument("--hidden_size", type=int, default=100, help="Dimension of the hidden representation")
   #parser.add_argument("--gpu", action="store_true", help="If set, training is going to use GPU 0")
@@ -66,6 +67,8 @@ def main():
   
   # read data from csv
   csv_data = csv.reader(open(args.train_data, "r"))
+  loop = args.seq_length
+  layers = args.layers - 1
   dict = collections.OrderedDict()
   # put data in dict
   for item in csv_data:
@@ -83,13 +86,9 @@ def main():
     order = raw_input("\nInput locations and forecast period: ")
     if "exit" in order: break;
     else:
-      #try:
+      try:
         locate = order.split(' ')[0]
         period = order.split(' ')[1]
-        #device = core.DeviceOption(caffe2_pb2.CUDA if args.gpu else caffe2_pb2.CPU, 0)
-        #with core.DeviceScope(device):
-        #  model = CharRNN(args)
-        #  model.CreateModel()
         # training with the data
         print "train the data with location " + locate
         data = dict[locate]
@@ -122,16 +121,12 @@ def main():
         # create and fit the LSTM network
         model = Sequential()
         model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
-        model.add(LSTM(4, return_sequences=True))
-        model.add(LSTM(4, return_sequences=True))
-        model.add(LSTM(4, return_sequences=True))
-        model.add(LSTM(4, return_sequences=True))
-        model.add(LSTM(4, return_sequences=True))
-        model.add(LSTM(4, return_sequences=True))
+        for i in xrange(layers-1):
+          model.add(LSTM(4, return_sequences=True))
         model.add(LSTM(4))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer='adam')
-        model.fit(trainX, trainY, epochs=1000, batch_size=64, verbose=2)
+        model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
         # make predictions
         trainPredict = model.predict(trainX)
         testPredict = model.predict(testX)
@@ -148,6 +143,7 @@ def main():
         # print dateAsKey
         # draw now:
         # model.TrainModel()
+
         # forecast
         
         trainPredictPlot = np.empty_like(dataset)
@@ -162,7 +158,6 @@ def main():
         plt.plot(scaler.inverse_transform(dataset))
         plt.plot(trainPredictPlot)
         plt.plot(testPredictPlot)
-        # plt.show()
         plt.savefig("output.pdf")
 
         '''
@@ -186,11 +181,10 @@ def main():
         # plt.show()
         plt.savefig("output.pdf")
         '''
-      #except Exception as E:
-      #  print "illegal input"
+      except Exception as E:
+        print "illegal input"
 
 if __name__ == '__main__':
-  #workspace.GlobalInit(['caffe2', '--caffe2_log_level=2'])
   main()
 
 
