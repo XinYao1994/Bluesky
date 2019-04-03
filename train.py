@@ -122,12 +122,11 @@ def main():
         model = Sequential()
         if layers > 1:
           model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
+          for i in xrange(layers-2):
+            model.add(LSTM(4, return_sequences=True))
+          model.add(LSTM(4))
         else:
           model.add(LSTM(4, input_shape=(1, look_back)))
-        for i in xrange(layers-2):
-          model.add(LSTM(4, return_sequences=True))
-        if layers > 1:
-          model.add(LSTM(4))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error', optimizer='adam')
         model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
