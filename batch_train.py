@@ -123,7 +123,7 @@ def main():
       model.add(LSTM(4, return_sequences=True))
     model.add(LSTM(4))
   else:
-  model.add(LSTM(4, input_shape=(1, look_back)))
+    model.add(LSTM(4, input_shape=(1, look_back)))
   model.add(Dense(1))
   model.compile(loss='mean_squared_error', optimizer='adam')
   model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
