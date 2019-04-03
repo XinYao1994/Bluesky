@@ -68,7 +68,7 @@ def main():
   # read data from csv
   csv_data = csv.reader(open(args.train_data, "r"))
   loop = args.seq_length
-  layers = args.layers - 1
+  layers = args.layers
   dict = collections.OrderedDict()
   # put data in dict
   for item in csv_data:
@@ -120,8 +120,11 @@ def main():
         # print testX, len(testX[0][0]), testY 
         # create and fit the LSTM network
         model = Sequential()
-        model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
-        for i in xrange(layers-1):
+        if layers > 1:
+          model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
+        else:
+          model.add(LSTM(4, input_shape=(1, look_back)))
+        for i in xrange(layers-2):
           model.add(LSTM(4, return_sequences=True))
         if layers > 1:
           model.add(LSTM(4))
