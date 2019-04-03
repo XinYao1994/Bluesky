@@ -84,83 +84,83 @@ def main():
 
   #while True:
   order = "NC6F 10"
-        locate = order.split(' ')[0]
-        period = order.split(' ')[1]
-        # training with the data
-        print "train the data with location " + locate
-        data = dict[locate]
-        dateAsKey = data.keys()
-        # Train total:
-        total_data = map(lambda x:float(x[0]), data.values())
-        c = {"1": total_data}
-        df = DataFrame(c)
-        dataset = df.values
-        dataset = dataset.astype('float32')
-        # normalize the dataset
-        scaler = MinMaxScaler(feature_range=(0, 1))
-        dataset = scaler.fit_transform(dataset)
+  locate = order.split(' ')[0]
+  period = order.split(' ')[1]
+  # training with the data
+  print "train the data with location " + locate
+  data = dict[locate]
+  dateAsKey = data.keys()
+  # Train total:
+  total_data = map(lambda x:float(x[0]), data.values())
+  c = {"1": total_data}
+  df = DataFrame(c)
+  dataset = df.values
+  dataset = dataset.astype('float32')
+  # normalize the dataset
+  scaler = MinMaxScaler(feature_range=(0, 1))
+  dataset = scaler.fit_transform(dataset)
         
-        train_size = int(len(dataset) * split)
-        test_size = len(dataset) - train_size
-        train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
-        # print train
-        # print test
+  train_size = int(len(dataset) * split)
+  test_size = len(dataset) - train_size
+  train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
+  # print train
+  # print test
 
-        look_back = loop
-        trainX, trainY = create_dataset(train, look_back)
-        testX, testY = create_dataset(test, look_back)
-        # reshape
-        print trainX
-        trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-        testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+  look_back = loop
+  trainX, trainY = create_dataset(train, look_back)
+  testX, testY = create_dataset(test, look_back)
+  # reshape
+  print trainX
+  trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
+  testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+  
+  # print testX, len(testX[0][0]), testY 
+  # create and fit the LSTM network
+  model = Sequential()
+  if layers > 1:
+    model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
+    for i in xrange(layers-2):
+      model.add(LSTM(4, return_sequences=True))
+    model.add(LSTM(4))
+  else:
+  model.add(LSTM(4, input_shape=(1, look_back)))
+  model.add(Dense(1))
+  model.compile(loss='mean_squared_error', optimizer='adam')
+  model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
+  # make predictions
+  trainPredict = model.predict(trainX)
+  testPredict = model.predict(testX)
+  # invert predictions
+  trainPredict = scaler.inverse_transform(trainPredict)
+  trainY = scaler.inverse_transform([trainY])
+  testPredict = scaler.inverse_transform(testPredict)
+  testY = scaler.inverse_transform([testY])
+  # calculate root mean squared error
+  trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
+  print('Train Score: %.2f RMSE' % (trainScore))
+  testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
+  print('Test Score: %.2f RMSE' % (testScore))
+  # print dateAsKey
+  # draw now:
+  # model.TrainModel()
 
-        # print testX, len(testX[0][0]), testY 
-        # create and fit the LSTM network
-        model = Sequential()
-        if layers > 1:
-          model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
-          for i in xrange(layers-2):
-            model.add(LSTM(4, return_sequences=True))
-          model.add(LSTM(4))
-        else:
-          model.add(LSTM(4, input_shape=(1, look_back)))
-        model.add(Dense(1))
-        model.compile(loss='mean_squared_error', optimizer='adam')
-        model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
-        # make predictions
-        trainPredict = model.predict(trainX)
-        testPredict = model.predict(testX)
-        # invert predictions
-        trainPredict = scaler.inverse_transform(trainPredict)
-        trainY = scaler.inverse_transform([trainY])
-        testPredict = scaler.inverse_transform(testPredict)
-        testY = scaler.inverse_transform([testY])
-        # calculate root mean squared error
-        trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
-        print('Train Score: %.2f RMSE' % (trainScore))
-        testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
-        print('Test Score: %.2f RMSE' % (testScore))
-        # print dateAsKey
-        # draw now:
-        # model.TrainModel()
-
-        # forecast
+  # forecast
         
-        trainPredictPlot = np.empty_like(dataset)
-        trainPredictPlot[:, :] = np.nan
-        trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
+  trainPredictPlot = np.empty_like(dataset)
+  trainPredictPlot[:, :] = np.nan
+  trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
 
-        testPredictPlot = np.empty_like(dataset)
-        testPredictPlot[:, :] = np.nan
-        testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
+  testPredictPlot = np.empty_like(dataset)
+  testPredictPlot[:, :] = np.nan
+  testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
 
-        plt.figure(figsize=(12,4))
-        plt.plot(scaler.inverse_transform(dataset))
-        plt.plot(trainPredictPlot)
-        plt.plot(testPredictPlot)
-        plt.savefig(locate+"_output_l"+str(args.layers)+"_RMSE_"+str(testScore)+".pdf")
+  plt.figure(figsize=(12,4))
+  plt.plot(scaler.inverse_transform(dataset))
+  plt.plot(trainPredictPlot)
+  plt.plot(testPredictPlot)
+  plt.savefig(locate+"_output_l"+str(args.layers)+"_"+str(args.train_iter)+"_RMSE_"+str(testScore)+".pdf")
 
-        '''
+  '''
         print "predict the tendency within " + period + " hours"
         dataAsPredict = range(int(period)) 
         Predictresult = []
@@ -180,7 +180,7 @@ def main():
         plt.ylabel("Total Enerage Usage")
         # plt.show()
         plt.savefig("output.pdf")
-        '''
+  '''
 
 if __name__ == '__main__':
   main()
