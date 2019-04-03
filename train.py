@@ -159,7 +159,7 @@ def main():
         plt.plot(scaler.inverse_transform(dataset))
         plt.plot(trainPredictPlot)
         plt.plot(testPredictPlot)
-        plt.savefig(locate+"_output_l"+str(args.layers)+"_RMSE_"+str(testScore).pdf")
+        plt.savefig(locate+"_output_l"+str(args.layers)+"_RMSE_"+str(testScore)+".pdf")
 
         '''
         print "predict the tendency within " + period + " hours"
