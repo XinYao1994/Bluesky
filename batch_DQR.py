@@ -114,7 +114,7 @@ def main():
     plt.plot(time_test, q_test, label=q)
   
   
-  plt.savefig(locate+"_output_l"+str(args.layers)+"_"+str(args.train_iter)+"_RMSE_"+str(testScore)+".pdf")
+  plt.savefig(locate+"_DQR_output_l"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
   
 plt.legend()
 if __name__ == '__main__':
