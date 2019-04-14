@@ -100,6 +100,7 @@ def main():
   p_test = model.predict(time_test)
   plt.plot(time_test, p_test, 'r', label="Sequential")
   
+  result = []
   #Quantiles
   Q_range = [0.1, 0.3, 0.5, 0.7, 0.9]
   for q in Q_range:
@@ -111,10 +112,17 @@ def main():
     model.fit(times_, total_data, epochs=args.train_iter, batch_size=args.batch_size, verbose=0)
     
     q_test = model.predict(time_test)
+    result.append(q_test)
     plt.plot(time_test, q_test, label=q)
   
-  
   plt.savefig(locate+"_DQR_output_l"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
+  
+  plt.figure()
+  plt.scatter(times_, total_data)
+  plt.plot(time_test, p_test, 'r', label="Sequential")
+  plt.plot(time_test, result[0], label="Min")
+  plt.plot(time_test, result[len(result)-1], label="Max")
+  plt.savefig(locate+"_DQR_output_Fin"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
   
 plt.legend()
 if __name__ == '__main__':
