@@ -11,3 +11,4 @@ pip install matplotlib --user
 Reference
 
 1. [Time Series Prediction With Deep Learning in Keras](https://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+2. [Deep Quantile Regression](https://towardsdatascience.com/deep-quantile-regression-c85481548b5a)
