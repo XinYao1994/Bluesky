@@ -20,10 +20,13 @@ import collections
 import math
 # using Keras
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Activation
 from keras.layers import LSTM
+
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
+
+import keras.backend as K
 
 # drawing
 from pandas import *
@@ -38,19 +41,9 @@ import argparse
 import logging
 from datetime import datetime
 
-split = 0.8
-# loop = 24 this means a day
-# --gpu
-
-# convert an array of values into a dataset matrix
-def create_dataset(dataset, look_back=1):
-  dataX, dataY = [], []
-  for i in range(len(dataset)-look_back-1):
-    a = dataset[i:(i+look_back), 0]
-    dataX.append(a)
-    dataY.append(dataset[i + look_back, 0])
-  return np.array(dataX), np.array(dataY)
-
+def tilted_loss(q,y,f):
+  e = (y-f)
+  return K.mean(K.maximum(q*e, (q-1)*e), axis=-1)
 
 def main():
   parser = argparse.ArgumentParser(description="Blue Sky Training")
@@ -92,96 +85,38 @@ def main():
   dateAsKey = data.keys()
   # Train total:
   total_data = map(lambda x:float(x[0]), data.values())
-  c = {"1": total_data}
-  df = DataFrame(c)
-  dataset = df.values
-  dataset = dataset.astype('float32')
-  # normalize the dataset
-  scaler = MinMaxScaler(feature_range=(0, 1))
-  dataset = scaler.fit_transform(dataset)
-        
-  train_size = int(len(dataset) * split)
-  test_size = len(dataset) - train_size
-  train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
-  # print train
-  # print test
-
-  look_back = loop
-  trainX, trainY = create_dataset(train, look_back)
-  testX, testY = create_dataset(test, look_back)
-  # reshape
-  print trainX
-  trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-  testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+  times_ = map(lambda x: x%24, xrange(len(total_data)))
   
-  # print testX, len(testX[0][0]), testY 
-  # create and fit the LSTM network
   model = Sequential()
-  if layers > 1:
-    model.add(LSTM(4, return_sequences=True, input_shape=(1, look_back)))
-    for i in xrange(layers-2):
-      model.add(LSTM(4, return_sequences=True))
-    model.add(LSTM(4))
-  else:
-    model.add(LSTM(4, input_shape=(1, look_back)))
+  model.add(Dense(units=24, input_dim=1, activation='relu'))
+  model.add(Dense(units=24, input_dim=1, activation='relu'))
   model.add(Dense(1))
-  model.compile(loss='mean_squared_error', optimizer='adam')
-  model.fit(trainX, trainY, epochs=args.train_iter, batch_size=args.batch_size, verbose=2)
-  # make predictions
-  trainPredict = model.predict(trainX)
-  testPredict = model.predict(testX)
-  # invert predictions
-  trainPredict = scaler.inverse_transform(trainPredict)
-  trainY = scaler.inverse_transform([trainY])
-  testPredict = scaler.inverse_transform(testPredict)
-  testY = scaler.inverse_transform([testY])
-  # calculate root mean squared error
-  trainScore = math.sqrt(mean_squared_error(trainY[0], trainPredict[:,0]))
-  print('Train Score: %.2f RMSE' % (trainScore))
-  testScore = math.sqrt(mean_squared_error(testY[0], testPredict[:,0]))
-  print('Test Score: %.2f RMSE' % (testScore))
-  # print dateAsKey
-  # draw now:
-  # model.TrainModel()
-
-  # forecast
-        
-  trainPredictPlot = np.empty_like(dataset)
-  trainPredictPlot[:, :] = np.nan
-  trainPredictPlot[look_back:len(trainPredict)+look_back, :] = trainPredict
-
-  testPredictPlot = np.empty_like(dataset)
-  testPredictPlot[:, :] = np.nan
-  testPredictPlot[len(trainPredict)+(look_back*2)+1:len(dataset)-1, :] = testPredict
-
-  plt.figure(figsize=(12,4))
-  plt.plot(scaler.inverse_transform(dataset))
-  plt.plot(trainPredictPlot)
-  plt.plot(testPredictPlot)
+  model.compile(loss='mae', optimizer='adadelta')
+  model.fit(times_, total_data, epochs=args.train_iter, batch_size=args.batch_size, verbose=0)
+  model.evaluate(times_, total_data)
+  
+  plt.scatter(times_, total_data)
+  time_test = np.array(xrange(24))
+  p_test = model.predict(time_test)
+  plt.plot(time_test, p_test, 'r', label="Sequential")
+  
+  #Quantiles
+  Q_range = [0.1, 0.3, 0.5, 0.7, 0.9]
+  for q in Q_range:
+    model = Sequential()
+    model.add(Dense(units=24, input_dim=1, activation='relu'))
+    model.add(Dense(units=24, input_dim=1, activation='relu'))
+    model.add(Dense(1))
+    model.compile(loss=lambda y,f: tilted_loss(q,y,f), optimizer='adadelta')
+    model.fit(times_, total_data, epochs=args.train_iter, batch_size=args.batch_size, verbose=0)
+    
+    q_test = model.predict(time_test)
+    plt.plot(time_test, q_test, label=q)
+  
+  
   plt.savefig(locate+"_output_l"+str(args.layers)+"_"+str(args.train_iter)+"_RMSE_"+str(testScore)+".pdf")
-
-  '''
-        print "predict the tendency within " + period + " hours"
-        dataAsPredict = range(int(period)) 
-        Predictresult = []
-        for i in dataAsPredict:
-          begin = len(dataset)-look_back+i
-          end = len(dataset)
-          window = np.append(dataset[begin:end,:], np.array(Predictresult))
-          print window
-          PX, PY = create_dataset(window, look_back)
-          print PX, PY
-          PX = np.reshape(PX, (PX.shape[0], 1, PX.shape[1]))
-          Predictresult.append(model.predict(PX));
-        
-        plt.figure(figsize=(12,5))#
-        plt.plot(dataAsPredict, Predictresult, linestyle='-', color='k', label = dataAsPredict)
-        plt.xlabel("TimeStamp (hours)")
-        plt.ylabel("Total Enerage Usage")
-        # plt.show()
-        plt.savefig("output.pdf")
-  '''
-
+  
+plt.legend()
 if __name__ == '__main__':
   main()
 
