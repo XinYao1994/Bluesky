@@ -48,6 +48,7 @@ def tilted_loss(q,y,f):
 def main():
   parser = argparse.ArgumentParser(description="Blue Sky Training")
   parser.add_argument("--train_data", type=str, default="hku_jcsviii.csv", help="Path to training data in a text file format")
+  parser.add_argument("--locate", type=str, default="NC6F 10", help="location of the dorms")
   parser.add_argument("--train_iter", type=int, default=1000, help="max training iteration")
   parser.add_argument("--seq_length", type=int, default=24, help="One training example sequence length")
   parser.add_argument("--layers", type=int, default=1, help="the number of layers of the NN")
@@ -76,9 +77,10 @@ def main():
   #print dict.keys()
 
   #while True:
-  order = "NC6F 10"
-  locate = order.split(' ')[0]
-  period = order.split(' ')[1]
+  #order = "NC6F 10"
+  locate = args.locate
+  #locate = order.split(' ')[0]
+  #period = order.split(' ')[1]
   # training with the data
   print "train the data with location " + locate
   data = dict[locate]
@@ -102,7 +104,8 @@ def main():
   
   result = []
   #Quantiles
-  Q_range = [0.1, 0.3, 0.5, 0.7, 0.9]
+  Q_range = [0.1, 0.9]
+  #Q_range = [0.1, 0.3, 0.5, 0.7, 0.9]
   for q in Q_range:
     model = Sequential()
     model.add(Dense(units=24, input_dim=1, activation='relu'))
@@ -110,21 +113,23 @@ def main():
     model.add(Dense(1))
     model.compile(loss=lambda y,f: tilted_loss(q,y,f), optimizer='adadelta')
     model.fit(times_, total_data, epochs=args.train_iter, batch_size=args.batch_size, verbose=0)
-    
     q_test = model.predict(time_test)
     result.append(q_test)
-    plt.plot(time_test, q_test, label=q)
+    #plt.plot(time_test, q_test, label=q)
   
-  plt.savefig(locate+"_DQR_output_l"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
-  
-  plt.figure()
-  plt.scatter(times_, total_data)
-  plt.plot(time_test, p_test, 'r', label="Sequential")
   plt.plot(time_test, result[0], label="Min")
   plt.plot(time_test, result[len(result)-1], label="Max")
-  plt.savefig(locate+"_DQR_output_Fin"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
+  plt.legend()
+  plt.savefig(locate+"_DQR_output_l"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
   
-plt.legend()
+  #plt.figure()
+  #plt.scatter(times_, total_data)
+  #plt.plot(time_test, p_test, 'r', label="Sequential")
+  #plt.plot(time_test, result[0], label="Min")
+  #plt.plot(time_test, result[len(result)-1], label="Max")
+  #plt.savefig(locate+"_DQR_output_Fin"+str(args.layers)+"_"+str(args.train_iter)+".pdf")
+  
+#plt.legend()
 if __name__ == '__main__':
   main()
 

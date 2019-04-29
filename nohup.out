@@ -180956,3 +180956,380 @@ train the data with location NC6F
   32/1500 [..............................] - ETA: 2s
 1024/1500 [===================>..........] - ETA: 0s
 1500/1500 [==============================] - 0s 90us/step
+Using TensorFlow backend.
+Available Location Name:
+train the data with location CSC10F 10
+Traceback (most recent call last):
+  File "batch_DQR.py", line 134, in <module>
+    main()
+  File "batch_DQR.py", line 86, in main
+    data = dict[locate]
+KeyError: 'CSC10F 10'
+Using TensorFlow backend.
+Available Location Name:
+train the data with location CSC10Pantry 10
+Traceback (most recent call last):
+  File "batch_DQR.py", line 134, in <module>
+    main()
+  File "batch_DQR.py", line 86, in main
+    data = dict[locate]
+KeyError: 'CSC10Pantry 10'
+Using TensorFlow backend.
+Available Location Name:
+train the data with location CSC11F 10
+Traceback (most recent call last):
+  File "batch_DQR.py", line 134, in <module>
+    main()
+  File "batch_DQR.py", line 86, in main
+    data = dict[locate]
+KeyError: 'CSC11F 10'
+Using TensorFlow backend.
+2019-04-29 17:21:45.016067: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:21:45.016517: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cb312e3030 executing computations on platform Host. Devices:
+2019-04-29 17:21:45.016596: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:21:45.021368: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:21:45.929302: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:21:45.942425: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55cb317242e0 executing computations on platform CUDA. Devices:
+2019-04-29 17:21:45.942539: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:21:45.944352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:21:45.944432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:21:45.944795: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:21:45.954273: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:21:45.954335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:21:45.954366: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:21:45.955118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:21:47.495367: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC10F
+
+  32/1500 [..............................] - ETA: 2s
+ 832/1500 [===============>..............] - ETA: 0s
+1500/1500 [==============================] - 0s 96us/step
+Using TensorFlow backend.
+2019-04-29 17:29:02.652915: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:29:02.653469: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x558dcb442030 executing computations on platform Host. Devices:
+2019-04-29 17:29:02.653526: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:29:02.658719: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:29:03.525602: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:29:03.539336: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x558dcb8832e0 executing computations on platform CUDA. Devices:
+2019-04-29 17:29:03.539456: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:29:03.541463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:29:03.541561: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:29:03.541725: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:29:03.550242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:29:03.550303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:29:03.550334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:29:03.551169: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:29:04.976911: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC10Pantry
+
+  32/1500 [..............................] - ETA: 2s
+ 832/1500 [===============>..............] - ETA: 0s
+1500/1500 [==============================] - 0s 91us/step
+Using TensorFlow backend.
+2019-04-29 17:36:34.765461: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:36:34.766121: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b4935d9030 executing computations on platform Host. Devices:
+2019-04-29 17:36:34.766193: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:36:34.775644: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:36:35.658443: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:36:35.673004: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b493a1a2e0 executing computations on platform CUDA. Devices:
+2019-04-29 17:36:35.673127: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:36:35.674874: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:36:35.674958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:36:35.675189: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:36:35.687479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:36:35.687521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:36:35.687551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:36:35.688181: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:36:36.940424: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC11F
+
+  32/1500 [..............................] - ETA: 2s
+1024/1500 [===================>..........] - ETA: 0s
+1500/1500 [==============================] - 0s 85us/step
+Using TensorFlow backend.
+2019-04-29 17:44:05.583529: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:44:05.584024: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x561078723030 executing computations on platform Host. Devices:
+2019-04-29 17:44:05.584058: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:44:05.593775: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:44:06.431590: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:44:06.446203: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x561078b642e0 executing computations on platform CUDA. Devices:
+2019-04-29 17:44:06.446311: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:44:06.448064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:44:06.448145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:44:06.448377: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:44:06.458060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:44:06.458130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:44:06.458168: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:44:06.459271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:44:08.015906: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC11Pantry
+
+  32/1499 [..............................] - ETA: 2s
+ 736/1499 [=============>................] - ETA: 0s
+1499/1499 [==============================] - 0s 106us/step
+Using TensorFlow backend.
+2019-04-29 17:51:36.626176: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:51:36.627185: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x556572b00080 executing computations on platform Host. Devices:
+2019-04-29 17:51:36.627239: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:51:36.630693: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:51:37.394007: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:51:37.410231: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x556571cb2060 executing computations on platform CUDA. Devices:
+2019-04-29 17:51:37.410333: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:51:37.411816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:51:37.411884: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:51:37.412099: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:51:37.420835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:51:37.420890: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:51:37.420917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:51:37.421701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:51:38.653513: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC12F
+
+  32/1500 [..............................] - ETA: 2s
+ 928/1500 [=================>............] - ETA: 0s
+1500/1500 [==============================] - 0s 90us/step
+Using TensorFlow backend.
+2019-04-29 17:58:51.254140: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 17:58:51.254857: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2e99e9630 executing computations on platform Host. Devices:
+2019-04-29 17:58:51.254940: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 17:58:51.259667: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 17:58:52.145769: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 17:58:52.158017: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b2e8839130 executing computations on platform CUDA. Devices:
+2019-04-29 17:58:52.158129: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 17:58:52.159691: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 17:58:52.159790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 17:58:52.160016: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 17:58:52.173422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 17:58:52.173513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 17:58:52.173551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 17:58:52.174233: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 17:58:53.834600: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC12Pantry
+
+  32/1499 [..............................] - ETA: 2s
+ 960/1499 [==================>...........] - ETA: 0s
+1499/1499 [==============================] - 0s 86us/step
+Using TensorFlow backend.
+2019-04-29 18:06:14.880802: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:06:14.881392: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x557fb83a1030 executing computations on platform Host. Devices:
+2019-04-29 18:06:14.881439: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:06:14.886404: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:06:15.743055: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:06:15.754688: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x557fb87e22e0 executing computations on platform CUDA. Devices:
+2019-04-29 18:06:15.754806: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:06:15.756494: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:06:15.756700: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:06:15.756940: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:06:15.766998: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:06:15.767043: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:06:15.767064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:06:15.767673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:06:17.204978: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC13F
+
+  32/1500 [..............................] - ETA: 2s
+1056/1500 [====================>.........] - ETA: 0s
+1500/1500 [==============================] - 0s 86us/step
+Using TensorFlow backend.
+2019-04-29 18:13:40.018493: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:13:40.019066: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55abd45740f0 executing computations on platform Host. Devices:
+2019-04-29 18:13:40.019126: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:13:40.023161: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:13:40.889597: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:13:40.902820: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55abd46258e0 executing computations on platform CUDA. Devices:
+2019-04-29 18:13:40.902940: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:13:40.904946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:13:40.905039: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:13:40.905324: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:13:40.915393: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:13:40.915449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:13:40.915473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:13:40.916121: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:13:42.428265: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC13Pantry
+
+  32/1500 [..............................] - ETA: 3s
+ 928/1500 [=================>............] - ETA: 0s
+1500/1500 [==============================] - 0s 104us/step
+Using TensorFlow backend.
+2019-04-29 18:20:59.685164: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:20:59.685753: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55ff27eb8080 executing computations on platform Host. Devices:
+2019-04-29 18:20:59.685801: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:20:59.690739: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:21:00.493383: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:21:00.506821: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55ff2706a060 executing computations on platform CUDA. Devices:
+2019-04-29 18:21:00.506950: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:21:00.508914: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:21:00.509032: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:21:00.509300: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:21:00.517327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:21:00.517383: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:21:00.517422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:21:00.518223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:21:02.110541: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC14F
+
+  32/1500 [..............................] - ETA: 2s
+ 864/1500 [================>.............] - ETA: 0s
+1500/1500 [==============================] - 0s 91us/step
+Using TensorFlow backend.
+2019-04-29 18:28:21.389270: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:28:21.390365: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5598f8c79d10 executing computations on platform Host. Devices:
+2019-04-29 18:28:21.390487: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:28:21.398065: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:28:22.185599: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:28:22.196687: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5598f7ac9130 executing computations on platform CUDA. Devices:
+2019-04-29 18:28:22.196848: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:28:22.200698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:28:22.200811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:28:22.201302: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:28:22.211333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:28:22.211406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:28:22.211443: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:28:22.212523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:28:23.692155: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC14Pantry
+
+  32/1500 [..............................] - ETA: 2s
+1120/1500 [=====================>........] - ETA: 0s
+1500/1500 [==============================] - 0s 84us/step
+Using TensorFlow backend.
+2019-04-29 18:35:37.479131: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:35:37.479810: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b8037da030 executing computations on platform Host. Devices:
+2019-04-29 18:35:37.479866: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:35:37.483896: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:35:38.305978: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:35:38.321119: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55b803c1b2e0 executing computations on platform CUDA. Devices:
+2019-04-29 18:35:38.321264: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:35:38.323146: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:35:38.323233: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:35:38.323542: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:35:38.333957: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:35:38.334002: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:35:38.334033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:35:38.334705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:35:39.835218: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC15F
+
+  32/1500 [..............................] - ETA: 2s
+ 896/1500 [================>.............] - ETA: 0s
+1500/1500 [==============================] - 0s 93us/step
+Using TensorFlow backend.
+2019-04-29 18:42:59.926171: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:42:59.926687: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c6f0b9a350 executing computations on platform Host. Devices:
+2019-04-29 18:42:59.926742: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:42:59.932090: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:43:00.718487: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:43:00.729430: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c6efd52060 executing computations on platform CUDA. Devices:
+2019-04-29 18:43:00.729503: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:43:00.730526: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:43:00.730570: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:43:00.730721: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:43:00.739976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:43:00.740041: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:43:00.740069: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:43:00.740961: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:43:02.457934: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC15Pantry
+
+  32/1500 [..............................] - ETA: 2s
+ 896/1500 [================>.............] - ETA: 0s
+1500/1500 [==============================] - 0s 88us/step
+Using TensorFlow backend.
+2019-04-29 18:50:17.517238: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:50:17.517809: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5627d123c040 executing computations on platform Host. Devices:
+2019-04-29 18:50:17.517858: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:50:17.522955: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:50:18.338919: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:50:18.351130: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5627d008b130 executing computations on platform CUDA. Devices:
+2019-04-29 18:50:18.351266: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:50:18.353087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:50:18.353204: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:50:18.353478: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:50:18.363018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:50:18.363072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:50:18.363107: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:50:18.363764: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:50:19.826231: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC16F
+
+  32/1500 [..............................] - ETA: 2s
+ 992/1500 [==================>...........] - ETA: 0s
+1500/1500 [==============================] - 0s 88us/step
+Using TensorFlow backend.
+2019-04-29 18:57:44.599276: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 1799980000 Hz
+2019-04-29 18:57:44.600042: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5581b1e4a030 executing computations on platform Host. Devices:
+2019-04-29 18:57:44.600106: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-04-29 18:57:44.606440: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-04-29 18:57:45.417818: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1009] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-04-29 18:57:45.431112: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5581b228b2e0 executing computations on platform CUDA. Devices:
+2019-04-29 18:57:45.431184: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-04-29 18:57:45.432032: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1551] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:08:00.0
+totalMemory: 10.92GiB freeMemory: 10.76GiB
+2019-04-29 18:57:45.432071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1674] Adding visible gpu devices: 0
+2019-04-29 18:57:45.432221: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-04-29 18:57:45.439085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1082] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-04-29 18:57:45.439145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1088]      0 
+2019-04-29 18:57:45.439176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1101] 0:   N 
+2019-04-29 18:57:45.440093: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1222] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10470 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:08:00.0, compute capability: 6.1)
+2019-04-29 18:57:46.954781: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+Available Location Name:
+train the data with location CSC16Pantry
+
+  32/1500 [..............................] - ETA: 2s
+ 928/1500 [=================>............] - ETA: 0s
+1500/1500 [==============================] - 0s 90us/step
